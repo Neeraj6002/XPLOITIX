@@ -66,4 +66,4 @@
     // Hide toast on click
     toast.addEventListener('click', () => {
       toast.classList.remove('show');
-    });
+    }); 
