@@ -67,19 +67,20 @@
   <h1 style="font-family:'Bebas Neue';">ACCESS</h1>
   <p style="color: var(--text-muted); font-size: 0.85rem;">Authorized users only</p>
 
-  <button class="google-btn" id="googleLogin">
-    SIGN IN WITH GOOGLE
-  </button>
+<button id="loginBtn">Login with Google</button>
+
 </div>
 
 <script type="module">
   import { auth, provider } from "./firebase.js";
-  import { signInWithPopup, onAuthStateChanged } 
-    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  import {
+    signInWithPopup,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-  const btn = document.getElementById("googleLogin");
+  const btn = document.getElementById("loginBtn"); // ✅ FIXED
 
-  // ✅ If already logged in, redirect
+  // Redirect if already logged in
   onAuthStateChanged(auth, (user) => {
     if (user) {
       window.location.href = "dashboard.html";
@@ -92,10 +93,11 @@
       window.location.href = "dashboard.html";
     } catch (err) {
       console.error(err);
-      alert("Popup blocked or domain not authorized");
+      alert(err.code); // shows REAL Firebase error if any
     }
   });
 </script>
+
 
 </body>
 </html>
