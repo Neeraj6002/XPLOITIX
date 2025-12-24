@@ -26,3 +26,4 @@ form.addEventListener('submit', async (e) => {
     }
     btn.innerText = "SUBMIT REQUEST";
 });
+

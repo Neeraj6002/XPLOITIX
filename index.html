@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>XPLOITIX | Cybersecurity Workshop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@400;600&display=swap"
+    rel="stylesheet">
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -20,99 +23,227 @@
 
 <body>
 
-<!-- NAVBAR -->
-<nav id="navbar">
-  <div class="nav-container">
-    <div class="nav-logo-side">
-      <img src="assets/SB.png" alt="MCET Logo" class="nav-img">
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo-side">
+        <img src="assets/SB.png" alt="MCET Logo" class="nav-img">
+      </div>
+
+      <div class="nav-logo-center">
+        <img src="assets/Offenso.png" alt="XPLOITIX Logo" class="nav-img-large">
+      </div>
+
+      <div class="nav-logo-side">
+        <img src="assets/ieee.png" alt="IEEE Logo" class="nav-img">
+      </div>
+    </div>
+  </nav>
+  <!-- HERO -->
+  <section class="hero matrix-bg">
+    <div>
+      <h1 class="glow-text">XPLOITIX</h1>
+      <p>BREAK TO BUILD BETTER SECURITY</p>
+
+      <div class="cta" onclick="scrollToRegister()">
+        REGISTER NOW
+        <div><i data-lucide="chevron-down"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+
+      <div class="about-content">
+        <div class="terminal-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title">STATUS: ACTIVE</span>
+        </div>
+        <h2 class="glow-text">ABOUT THE EVENT</h2>
+        <p class="cyber-p">
+          XPLOITIX is a flagship cybersecurity hands-on workshop organized by IEEE SB MCET × Offenso, aimed at
+          empowering students with practical, real-world security skills.
+        </p>
+        <p class="cyber-p">
+          This event is designed to take participants beyond classroom theory and into the actual working environment of
+          cybersecurity, where learning goes far beyond observing tools or memorizing concepts. At XPLOITIX,
+          participants explore how cybersecurity solutions are designed, developed, and implemented from the ground up.
+        </p>
+
+        <div class="mission-tags">
+          <span>#HACKETHICS 2.0</span>
+          <span>#Offenso</span>
+          <span>#CYBER_SEC</span>
+        </div>
+      </div>
+
+      <div class="about-stats cyber-border">
+        <div class="stat-item">
+          <i data-lucide="calendar"></i>
+          <div>
+            <h4>START DATE</h4>
+            <p>Friday, 4 Jan 2025</p>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i data-lucide="map-pin"></i>
+          <div>
+            <h4>LOCATION</h4>
+            <p>MCET Anand, TVM</p>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i data-lucide="clock"></i>
+          <div>
+            <h4>SCHEDULE</h4>
+            <p>09:00 AM (Sun) - 04:00 PM (Sun)</p>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i data-lucide="users"></i>
+          <div>
+            <h4>HOSTED BY</h4>
+            <p>IEEE SB MCET</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- REGISTER -->
+  <section id="register">
+    <div class="form-card">
+      <h2 class="glow-text">OPERATIVE REGISTRATION</h2>
+      <form id="regForm">
+        <div class="input-group">
+          <label>Full Name</label>
+          <input id="name" type="text" placeholder="Enter your name" required>
+        </div>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label>Email Address</label>
+            <input id="email" type="email" placeholder="email@example.com" required>
+          </div>
+          <div class="input-group">
+            <label>Phone Number</label>
+            <input id="phone" type="tel" placeholder="+91 00000 00000" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>College / Institution</label>
+          <input id="college" placeholder="Enter college name" required>
+        </div>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label>Year of Study</label>
+            <select id="year" required>
+              <option value="" disabled selected>Select Year</option>
+              <option>1st Year</option>
+              <option>2nd Year</option>
+              <option>3rd Year</option>
+              <option>4th Year</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Branch</label>
+            <input id="branch" placeholder="e.g. CSE" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>IEEE Membership Status</label>
+          <select id="ieeeMember" required>
+            <option value="no">No, I am not a member</option>
+            <option value="yes">Yes, I am a member</option>
+          </select>
+        </div>
+
+        <div id="ieeeIdBox" class="input-group" style="display:none;">
+          <label>IEEE Membership ID</label>
+          <input id="ieeeId" placeholder="12-digit ID number">
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <span>INITIALIZE REGISTRATION</span>
+          <i data-lucide="shield-check"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+
+
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h2 class="footer-logo">XPLOITIX<span>.</span></h2>
+        <p>Team IEEE SB MCET</p>
+      </div>
+
+
+
+      <div class="footer-socials">
+        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+        <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="https://ieee-sbmcet.netlify.app" aria-label="Website">
+          <i data-lucide="globe"></i>
+        </a>
+
+      </div>
     </div>
 
-    <div class="nav-logo-center">
-      <img src="assets/Offenso.png" alt="XPLOITIX Logo" class="nav-img-large">
+    <div class="footer-bottom">
+      <p>© 2025 IEEE SB-MCET </p>
     </div>
+  </footer>
 
-    <div class="nav-logo-side">
-      <img src="assets/ieee.png" alt="IEEE Logo" class="nav-img">
-    </div>
-  </div>
-</nav>
-<!-- HERO -->
-<section class="hero matrix-bg">
-  <div>
-    <h1 class="glow-text">XPLOITIX</h1>
-    <p>BREAK TO BUILD BETTER SECURITY</p>
+  <script>
+    lucide.createIcons();
 
-    <div class="cta" onclick="scrollToRegister()">
-      REGISTER NOW
-      <div><i data-lucide="chevron-down"></i></div>
-    </div>
-  </div>
-</section>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
 
-<!-- REGISTER -->
-<section id="register" class="matrix-bg">
-  <div class="form-card cyber-border glow-box">
-    <h2 style="text-align:center;font-family:Orbitron;">REGISTER NOW</h2>
+    function scrollToRegister() {
+      document.getElementById('register').scrollIntoView();
+    }
 
-    <form id="regForm">
-      <label>Name</label>
-      <input id="name">
-      <div class="error" id="nameErr"></div>
+    document.getElementById('regForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Registration Successful!');
+      e.target.reset();
+    });
 
-      <label>Email</label>
-      <input id="email">
-      <div class="error" id="emailErr"></div>
 
-      <label>Phone</label>
-      <input id="phone">
-      <div class="error" id="phoneErr"></div>
+    const ieeeSelect = document.getElementById("ieeeMember");
+    const ieeeBox = document.getElementById("ieeeIdBox");
+    const ieeeIdInput = document.getElementById("ieeeId");
 
-      <label>College</label>
-      <input id="college">
+    ieeeSelect.addEventListener("change", () => {
+      if (ieeeSelect.value === "yes") {
+        ieeeBox.style.display = "block";
+        ieeeIdInput.required = true;
+      } else {
+        ieeeBox.style.display = "none";
+        ieeeIdInput.required = false;
+        ieeeIdInput.value = "";
+      }
+    });
 
-      <label>Year</label>
-      <select id="year">
-        <option value="">Select</option>
-        <option>1st</option><option>2nd</option><option>3rd</option><option>4th</option>
-      </select>
 
-      <button type="submit">REGISTER FOR XPLOITIX</button>
-    </form>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 <span style="color:var(--primary)">XPLOITIX</span></p>
-  <p>Team IEEE SB MCET</p>
-
-  <div class="socials">
-    <a href="#"><i data-lucide="linkedin"></i></a>
-    <a href="#"><i data-lucide="instagram"></i></a>
-  </div>
-</footer>
-
-<script>
-  lucide.createIcons();
-
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  function scrollToRegister() {
-    document.getElementById('register').scrollIntoView();
-  }
-
-  document.getElementById('regForm').addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Registration Successful!');
-    e.target.reset();
-  });
-</script>
-<script type="module" src="register.js"></script>
+  </script>
+  <script type="module" src="register.js"></script>
 </body>
+
 </html>
-
-
-

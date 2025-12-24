@@ -87,16 +87,18 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 999; /* ensure it's always above matrix effect */
   padding: 10px 0;
-  transition: 0.3s ease;
-}
 
-nav.scrolled {
+  /* ALWAYS visible */
   background: rgba(0, 10, 0, 0.85);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--primary);
+  border-bottom: 1px solid var(--border);
+
+  transition: background 0.3s ease, border 0.3s ease;
 }
+
+
 
 .nav-container {
   max-width: 1400px;
@@ -117,21 +119,21 @@ nav.scrolled {
 }
 
 .nav-img {
-  height: 50px; /* Adjust based on your logo size */
+  height: 40px; /* Adjust based on your logo size */
   width: auto;
-  filter: drop-shadow(0 0 5px var(--primary));
+
 }
 
 .nav-img-large {
-  height: 70px; /* Center logo slightly larger */
+  height: 40px; /* Center logo slightly larger */
   width: auto;
-  filter: drop-shadow(0 0 10px var(--primary));
+
 }
 
 /* Make it responsive for mobile */
 @media (max-width: 600px) {
-  .nav-img { height: 35px; }
-  .nav-img-large { height: 50px; }
+  .nav-img { height: 30px; }
+  .nav-img-large { height: 40px; }
   .nav-container { padding: 0 15px; }
 }
 
@@ -170,73 +172,353 @@ nav.scrolled {
       animation: bounce 1.5s infinite;
     }
 
-    /* =======================
-       FORM
-    ======================== */
-    section#register {
-      padding: 120px 20px;
-    }
+/* =======================
+   ABOUT SECTION
+======================== */
+/* =======================
+   ABOUT SECTION STYLING
+======================== */
+.about-section {
+  padding: 100px 20px;
+  background: linear-gradient(to bottom, #000000, #001a00);
+}
 
-    .form-card {
-      max-width: 480px;
-      margin: auto;
-      padding: 30px;
-    }
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+}
 
-    label {
-      display: block;
-      margin-top: 20px;
-      margin-bottom: 6px;
-    }
+/* Terminal Window Header Effect */
+.terminal-header {
+  background: #1a1a1a;
+  padding: 8px 15px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(0, 255, 102, 0.2);
+  border-bottom: none;
+  width: fit-content;
+  margin-bottom: -1px;
+}
 
-    input, select {
-      width: 100%;
-      padding: 12px;
-      background: #002200;
-      border: 1px solid var(--border);
-      color: #eaffea;
-    }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+.terminal-title {
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-family: 'Orbitron';
+  margin-left: 10px;
+  letter-spacing: 1px;
+}
 
-    button {
-      margin-top: 30px;
-      width: 100%;
-      padding: 16px;
-      font-family: Orbitron;
-      background: var(--primary);
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
+.about-content h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+}
 
-    .error {
-      color: #ff5555;
-      font-size: 0.9rem;
-    }
+.cyber-p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
 
+.highlight { color: var(--primary); font-weight: 600; }
+
+.mission-tags { display: flex; gap: 10px; margin-top: 25px; }
+.mission-tags span {
+  font-family: 'Orbitron';
+  font-size: 0.75rem;
+  padding: 5px 12px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background: rgba(0, 255, 102, 0.05);
+}
+
+/* Info Cards (Right Side) */
+.about-stats {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  background: rgba(0, 20, 0, 0.6);
+}
+
+.stat-item { display: flex; align-items: center; gap: 20px; }
+.stat-item i { color: var(--primary); width: 28px; height: 28px; }
+.stat-item h4 {
+  font-family: 'Orbitron';
+  font-size: 0.7rem;
+  color: var(--primary);
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+.stat-item p { color: #fff; font-size: 1.1rem; font-weight: 500; }
+
+/* Responsive Grid */
+@media (max-width: 992px) {
+  .about-container { grid-template-columns: 1fr; gap: 50px; }
+  .about-content { text-align: center; }
+  .terminal-header { margin: 0 auto; }
+  .mission-tags { justify-content: center; }
+}
+
+@media (max-width: 420px) {
+  .about-section {
+    padding: 70px 15px;
+  }
+
+  .about-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .cyber-p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .mission-tags {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .about-stats {
+    padding: 25px;
+    gap: 25px;
+  }
+
+  .stat-item p {
+    font-size: 0.95rem;
+  }
+}
+
+/* =======================
+   REGISTER 
+======================= */
+
+/* Container for the whole section */
+section#register {
+  padding: 100px 20px;
+  background: radial-gradient(circle at center, #002200 0%, #000000 100%);
+}
+
+/* The Main Card */
+.form-card {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 50px;
+  background: rgba(0, 15, 0, 0.9);
+  border: 1px solid var(--border);
+  position: relative;
+  box-shadow: 0 0 40px rgba(0, 255, 102, 0.1);
+}
+
+/* Cyber-Corner Accents */
+.form-card::before, .form-card::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--primary);
+}
+.form-card::before { top: -5px; left: -5px; border-right: 0; border-bottom: 0; }
+.form-card::after { bottom: -5px; right: -5px; border-left: 0; border-top: 0; }
+
+.form-card h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+}
+
+/* Layout for rows (Email/Phone and Year/Branch) */
+.input-row {
+  display: flex;
+  gap: 20px;
+}
+
+.input-group {
+  margin-bottom: 25px;
+  flex: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(0, 40, 0, 0.5);
+  border: 1px solid rgba(0, 255, 102, 0.2);
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(0, 60, 0, 0.8);
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+}
+
+/* Professional Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 18px;
+  margin-top: 20px;
+  background: var(--primary);
+  color: #000;
+  border: none;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: #fff;
+  box-shadow: 0 0 25px var(--primary);
+  transform: translateY(-2px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .input-row { flex-direction: column; gap: 0; }
+  .form-card { padding: 30px 20px; }
+}
     /* =======================
        FOOTER
     ======================== */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 20px;
-      text-align: center;
-    }
+:root {
+  --primary: #00ff88; /* Example green tech color - adjust to your brand */
+  --bg-dark: #0a0a0a;
+  --text-dim: #a0a0a0;
+  --border: rgba(255, 255, 255, 0.1);
+}
 
-    .socials a {
-      margin: 0 10px;
-      display: inline-flex;
-    }
+.site-footer {
+  background: var(--bg-dark);
+  border-top: 1px solid var(--border);
+  padding: 60px 20px 20px;
+  font-family: 'Inter', sans-serif;
+  color: white;
+}
 
-    /* =======================
-       ANIMATIONS
-    ======================== */
-    @keyframes flicker {
-      0%, 100% { opacity: 1 }
-      93% { opacity: 0.7 }
-      95% { opacity: 1 }
-    }
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0) }
-      50% { transform: translateY(8px) }
-    }
+/* Brand Section */
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.footer-logo span {
+  color: var(--primary);
+  animation: flicker 3s infinite;
+}
+
+.footer-brand p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+/* Navigation Links */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--text-dim);
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+  transform: translateX(5px);
+}
+
+/* Social Icons */
+.footer-socials {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.footer-socials a {
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.footer-socials a:hover {
+  background: rgba(var(--primary-rgb), 0.1); /* Optional if you define RGB */
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-5px);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer-socials {
+    justify-content: center;
+  }
+  
+  .footer-links a:hover {
+    transform: none;
+  }
+}
