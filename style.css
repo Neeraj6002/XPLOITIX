@@ -10,7 +10,7 @@
       --bg-secondary: hsl(120, 30%, 12%);
       --text-primary: hsl(120, 100%, 95%);
       --text-muted: hsl(120, 20%, 60%);
-      --color-primary: hsl(120, 100%, 50%);
+      --color-primary: hsl(120, 100%, 44%);
       --color-border: hsl(120, 50%, 20%);
     }
 
@@ -25,15 +25,15 @@
     .font-handwritten { font-family: 'Rock Salt', cursive; }
 
     .text-glow {
-      text-shadow: 0 0 10px rgba(0, 255, 0, 0.8),
+      text-shadow: 0 0 10px rgba(1, 187, 1, 0.8),
                    0 0 20px rgba(0, 255, 0, 0.6),
-                   0 0 30px rgba(0, 255, 0, 0.4);
+                   0 0 30px rgba(0, 201, 0, 0.4);
     }
 
     .text-glow-intense {
-      text-shadow: 0 0 20px rgba(0, 255, 0, 1),
-                   0 0 40px rgba(0, 255, 0, 0.8),
-                   0 0 60px rgba(0, 255, 0, 0.6);
+      text-shadow: 0 0 20px rgb(2, 182, 2),
+                   0 0 40px rgba(1, 206, 1, 0.8),
+                   0 0 60px rgba(2, 206, 2, 0.6);
     }
 
     .box-glow {
@@ -108,6 +108,23 @@
     height: 34px;
   }
 }
+
+@media (max-width: 748px) {
+  .logo-nav-container {
+    justify-content: space-around;
+  }
+
+  .nav-logo-img {
+    height: 24px;
+  }
+  .register-btn{
+    padding: 12px 24px;
+    font-size: 12px;
+    margin-bottom: 25px;
+  }
+  
+}
+
 
     /* Hero Section */
     .hero {

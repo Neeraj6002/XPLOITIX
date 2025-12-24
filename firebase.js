@@ -1,16 +1,20 @@
+// firebase.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCCT619qICcyn_0jLSRZq-KcjYgJVjBwg4",
+  authDomain: "xploitix-c2d84.firebaseapp.com",
+  projectId: "xploitix-c2d84",
+  storageBucket: "xploitix-c2d84.firebasestorage.app",
+  messagingSenderId: "465564339732",
+  appId: "1:465564339732:web:4d7b34ae73ddfc4507e101",
+  measurementId: "G-3WYCF075T1"
 };
 
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+
 export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider();
+export const db = getFirestore(app);

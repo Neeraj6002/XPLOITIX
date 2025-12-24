@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Secure Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary: hsl(120, 10%, 4%);
+      --bg-card: hsl(120, 10%, 6%);
+      --text-primary: hsl(120, 100%, 95%);
+      --text-muted: hsl(120, 20%, 60%);
+      --color-primary: hsl(120, 100%, 44%);
+      --color-border: hsl(120, 50%, 20%);
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .login-card {
+      width: 360px;
+      background: var(--bg-card);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--color-border);
+      text-align: center;
+      z-index: 2;
+    }
+
+    .google-btn {
+      margin-top: 2rem;
+      width: 100%;
+      padding: 0.9rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      background: transparent;
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .google-btn:hover {
+      background: var(--color-primary);
+      color: black;
+      box-shadow: 0 0 20px rgba(0,255,0,0.7);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="login-card">
+  <h1 style="font-family:'Bebas Neue';">ACCESS</h1>
+  <p style="color: var(--text-muted); font-size: 0.85rem;">Authorized users only</p>
+
+  <button class="google-btn" id="googleLogin">
+    SIGN IN WITH GOOGLE
+  </button>
+</div>
+
+<script type="module">
+  import { auth, provider } from "./firebase.js";
+  import { signInWithPopup, onAuthStateChanged } 
+    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  const btn = document.getElementById("googleLogin");
+
+  // ✅ If already logged in, redirect
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      window.location.href = "dashboard.html";
+    }
+  });
+
+  btn.addEventListener("click", async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      window.location.href = "dashboard.html";
+    } catch (err) {
+      console.error(err);
+      alert("Popup blocked or domain not authorized");
+    }
+  });
+</script>
+
+</body>
+</html>
