@@ -1,249 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <title>XPLOITIX | Cybersecurity Workshop</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XPLOITIX 2026 - Kerala's Premier Cybersecurity Event</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Bebas+Neue&family=Rock+Salt&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@400;600&display=swap"
-    rel="stylesheet">
-
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <style>
-
-  </style>
 </head>
-
 <body>
+  <!-- Navbar -->
+ <nav class="logo-nav">
+  <div class="logo-nav-container">
+    <!-- Logo 1 -->
+    <img src="assets/SB.png" alt="IEEE Logo" class="nav-logo-img">
 
-  <!-- NAVBAR -->
-  <nav id="navbar">
-    <div class="nav-container">
-      <div class="nav-logo-side">
-        <img src="assets/SB.png" alt="MCET Logo" class="nav-img">
+    <!-- Logo 2 -->
+    <img src="assets/Offenso.png" alt="MCET Logo" class="nav-logo-img">
+
+    <!-- Logo 3 -->
+    <img src="assets/ieee.png" alt="Offenso Logo" class="nav-logo-img">
+  </div>
+</nav>
+
+
+  <!-- Hero Section -->
+  <section id="home" class="hero cyber-grid">
+    <div class="hero-bg-gradient"></div>
+    <div class="hero-glow"></div>
+
+    <div style="position: relative; z-index: 10; text-align: center; max-width: 1200px; padding: 0 16px;">
+      <h1 class="hero-title font-display text-glow-intense" style="color: var(--color-primary);">
+        XPLOITIX
+      </h1>
+
+      <h2 class="hero-tagline font-handwritten text-glow">
+        BREAK TO BUILD BETTER SECURITY
+      </h2>
+
+      <div class="collaboration-box">
+        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 16px;">
+          <span style="color: var(--text-muted); font-size: 14px; letter-spacing: 1px;">In Collaboration with</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--color-primary); display: flex; align-items: center; justify-content: center; position: relative;">
+              <div style="width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--color-primary);"></div>
+              <div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 12px; height: 2px; background: var(--color-primary);"></div>
+            </div>
+            <div>
+              <p style="font-size: 14px; font-weight: 700;">offenso<sup style="font-size: 8px;">™</sup></p>
+              <p style="font-size: 10px; color: var(--text-muted);">Hackers Academy</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="nav-logo-center">
-        <img src="assets/Offenso.png" alt="XPLOITIX Logo" class="nav-img-large">
+      <div class="date-box">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 24px;">
+          <span class="date-number font-display text-glow" style="color: var(--color-primary);">04</span>
+          <div style="border-left: 2px solid var(--color-primary); padding-left: 16px;">
+            <p style="font-size: 24px; font-weight: 700; letter-spacing: 2px;">JANUARY</p>
+            <p style="font-size: 24px; font-weight: 700; letter-spacing: 2px;">2026</p>
+          </div>
+        </div>
       </div>
 
-      <div class="nav-logo-side">
-        <img src="assets/ieee.png" alt="IEEE Logo" class="nav-img">
+      <a href="#register" class="register-btn box-glow">REGISTER NOW</a>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-bar-content">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="10" stroke-width="2"/>
+            <line x1="2" y1="12" x2="22" y2="12" stroke-width="2"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-width="2"/>
+          </svg>
+          <span style="font-size: 14px; font-weight: 500; letter-spacing: 1px;">ieee-sbmcet.netlify.app</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 16px;">
+
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-width="2"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2"/>
+          </svg>
+          <span style="font-size: 14px; font-weight: 500;">ieee_sb_mcet</span>
+        </div>
       </div>
     </div>
-  </nav>
-  <!-- HERO -->
-  <section class="hero matrix-bg">
-    <div>
-      <h1 class="glow-text">XPLOITIX</h1>
-      <p>BREAK TO BUILD BETTER SECURITY</p>
+  </section>
 
-      <div class="cta" onclick="scrollToRegister()">
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h2 class="section-title font-display text-glow" style="color: var(--color-primary);">
+        ABOUT XPLOITIX
+      </h2>
+      <div class="section-divider"></div>
+      <p class="section-description">
+        XPLOITIX is Kerala's premier cybersecurity event, bringing together hackers, security researchers, 
+        and tech enthusiasts for an immersive experience in ethical hacking and digital security.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-card box-glow">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--color-primary); margin-bottom: 16px;">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2"/>
+          </svg>
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">CTF Challenges</h3>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+            Test your skills in Capture The Flag competitions covering web, crypto, forensics and more.
+          </p>
+        </div>
+
+        <div class="feature-card box-glow">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--color-primary); margin-bottom: 16px;">
+            <circle cx="12" cy="12" r="10" stroke-width="2"/>
+            <circle cx="12" cy="12" r="6" stroke-width="2"/>
+            <circle cx="12" cy="12" r="2" stroke-width="2"/>
+          </svg>
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Penetration Testing</h3>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+            Learn real-world hacking techniques and ethical penetration testing methodologies.
+          </p>
+        </div>
+
+        <div class="feature-card box-glow">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--color-primary); margin-bottom: 16px;">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="2"/>
+            <circle cx="9" cy="7" r="4" stroke-width="2"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke-width="2"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-width="2"/>
+          </svg>
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Networking</h3>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+            Connect with fellow security enthusiasts, professionals and industry experts.
+          </p>
+        </div>
+
+        <div class="feature-card box-glow">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--color-primary); margin-bottom: 16px;">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" stroke-width="2"/>
+          </svg>
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Workshops</h3>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+            Hands-on workshops on the latest cybersecurity tools and techniques.
+          </p>
+        </div>
+      </div>
+
+      <div class="event-stats">
+        <div class="stat-item">
+          <span class="pulse-dot"></span>
+          <span>500+ Participants</span>
+        </div>
+        <div class="stat-item">
+          <span class="pulse-dot"></span>
+          <span>24+ Hours</span>
+        </div>
+        <div class="stat-item">
+          <span class="pulse-dot"></span>
+          <span>₹1,00,000 Prize Pool</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration Form -->
+  <section id="register" class="registration cyber-grid">
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 0, 0.05) 100%); pointer-events: none;"></div>
+    
+    <div style="max-width: 700px; margin: 0 auto; position: relative; z-index: 10;">
+      <h2 class="section-title font-display text-glow" style="color: var(--color-primary);">
         REGISTER NOW
-        <div><i data-lucide="chevron-down"></i></div>
-      </div>
-    </div>
-  </section>
+      </h2>
+      <div class="section-divider"></div>
+      <p style="text-align: center; color: var(--text-muted); margin-bottom: 48px;">
+        Secure your spot at Kerala's biggest cybersecurity event
+      </p>
 
-  <!-- ABOUT -->
-  <section id="about" class="about-section">
-    <div class="about-container">
+      <form id="registrationForm" class="form-container box-glow">
+        <div class="form-corners tl"></div>
+        <div class="form-corners tr"></div>
+        <div class="form-corners bl"></div>
+        <div class="form-corners br"></div>
 
-      <div class="about-content">
-        <div class="terminal-header">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
-          <span class="terminal-title">STATUS: ACTIVE</span>
+        <div class="form-group">
+          <label for="name" class="form-label">FULL NAME *</label>
+          <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
         </div>
-        <h2 class="glow-text">ABOUT THE EVENT</h2>
-        <p class="cyber-p">
-          XPLOITIX is a flagship cybersecurity hands-on workshop organized by IEEE SB MCET × Offenso, aimed at
-          empowering students with practical, real-world security skills.
-        </p>
-        <p class="cyber-p">
-          This event is designed to take participants beyond classroom theory and into the actual working environment of
-          cybersecurity, where learning goes far beyond observing tools or memorizing concepts. At XPLOITIX,
-          participants explore how cybersecurity solutions are designed, developed, and implemented from the ground up.
-        </p>
 
-        <div class="mission-tags">
-          <span>#HACKETHICS 2.0</span>
-          <span>#Offenso</span>
-          <span>#CYBER_SEC</span>
+        <div class="form-group">
+          <label for="email" class="form-label">EMAIL ADDRESS *</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
         </div>
-      </div>
 
-      <div class="about-stats cyber-border">
-        <div class="stat-item">
-          <i data-lucide="calendar"></i>
-          <div>
-            <h4>START DATE</h4>
-            <p>Friday, 4 Jan 2025</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone" class="form-label">PHONE NUMBER *</label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
           </div>
-        </div>
-        <div class="stat-item">
-          <i data-lucide="map-pin"></i>
-          <div>
-            <h4>LOCATION</h4>
-            <p>MCET Anand, TVM</p>
-          </div>
-        </div>
-        <div class="stat-item">
-          <i data-lucide="clock"></i>
-          <div>
-            <h4>SCHEDULE</h4>
-            <p>09:00 AM (Sun) - 04:00 PM (Sun)</p>
-          </div>
-        </div>
-        <div class="stat-item">
-          <i data-lucide="users"></i>
-          <div>
-            <h4>HOSTED BY</h4>
-            <p>IEEE SB MCET</p>
-          </div>
-        </div>
-      </div>
 
-    </div>
-  </section>
-
-
-
-  <!-- REGISTER -->
-  <section id="register">
-    <div class="form-card">
-      <h2 class="glow-text">OPERATIVE REGISTRATION</h2>
-      <form id="regForm">
-        <div class="input-group">
-          <label>Full Name</label>
-          <input id="name" type="text" placeholder="Enter your name" required>
-        </div>
-
-        <div class="input-row">
-          <div class="input-group">
-            <label>Email Address</label>
-            <input id="email" type="email" placeholder="email@example.com" required>
-          </div>
-          <div class="input-group">
-            <label>Phone Number</label>
-            <input id="phone" type="tel" placeholder="+91 00000 00000" required>
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label>College / Institution</label>
-          <input id="college" placeholder="Enter college name" required>
-        </div>
-
-        <div class="input-row">
-          <div class="input-group">
-            <label>Year of Study</label>
-            <select id="year" required>
-              <option value="" disabled selected>Select Year</option>
-              <option>1st Year</option>
-              <option>2nd Year</option>
-              <option>3rd Year</option>
-              <option>4th Year</option>
+          <div class="form-group">
+            <label for="year" class="form-label">YEAR OF STUDY *</label>
+            <select id="year" name="year" class="form-select" required>
+              <option value="">Select Year</option>
+              <option value="1">1st Year</option>
+              <option value="2">2nd Year</option>
+              <option value="3">3rd Year</option>
+              <option value="4">4th Year</option>
+              <option value="other">Other</option>
             </select>
           </div>
-          <div class="input-group">
-            <label>Branch</label>
-            <input id="branch" placeholder="e.g. CSE" required>
-          </div>
         </div>
 
-        <div class="input-group">
-          <label>IEEE Membership Status</label>
-          <select id="ieeeMember" required>
-            <option value="no">No, I am not a member</option>
-            <option value="yes">Yes, I am a member</option>
+        <div class="form-group">
+          <label for="college" class="form-label">COLLEGE / INSTITUTION *</label>
+          <input type="text" id="college" name="college" class="form-input" placeholder="Enter your college name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="experience" class="form-label">CYBERSECURITY EXPERIENCE</label>
+          <select id="experience" name="experience" class="form-select">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+            <option value="professional">Professional</option>
           </select>
         </div>
 
-        <div id="ieeeIdBox" class="input-group" style="display:none;">
-          <label>IEEE Membership ID</label>
-          <input id="ieeeId" placeholder="12-digit ID number">
-        </div>
-
-        <button type="submit" class="submit-btn">
-          <span>INITIALIZE REGISTRATION</span>
-          <i data-lucide="shield-check"></i>
+        <button type="submit" class="submit-btn box-glow" id="submitBtn">
+          SUBMIT REGISTRATION
         </button>
       </form>
+
+      <p class="form-note">
+        By registering, you agree to our terms and conditions. Limited seats available.
+      </p>
     </div>
   </section>
 
-
-
-  <footer class="site-footer">
-    <div class="footer-container">
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
       <div class="footer-brand">
-        <h2 class="footer-logo">XPLOITIX<span>.</span></h2>
-        <p>Team IEEE SB MCET</p>
+        <h3 class="font-display text-glow" style="color: var(--color-primary);">XPLOITIX</h3>
+        <p>Kerala's premier cybersecurity event bringing together hackers, security researchers, and tech enthusiasts.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-width="2"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke-width="2"/>
+              <rect x="2" y="9" width="4" height="12" stroke-width="2"/>
+              <circle cx="4" cy="4" r="2" stroke-width="2"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" stroke-width="2"/>
+            </svg>
+          </a>
+        </div>
       </div>
 
+      <div class="footer-section">
+        <h4>QUICK LINKS</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#register">Register</a></li>
+        </ul>
+      </div>
 
+      <div class="footer-section">
+        <h4>ORGANIZERS</h4>
+        <ul>
+          <li>IEEE SB MCET</li>
+          <li>Offenso Hackers Academy</li>
+          <li>Mohandas College of Engineering</li>
+        </ul>
+      </div>
 
-      <div class="footer-socials">
-        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-        <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-        <a href="https://ieee-sbmcet.netlify.app" aria-label="Website">
-          <i data-lucide="globe"></i>
-        </a>
-
+      <div class="footer-section">
+        <h4>CONTACT</h4>
+        <div class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--color-primary); flex-shrink: 0;">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-width="2"/>
+            <polyline points="22,6 12,13 2,6" stroke-width="2"/>
+          </svg>
+          <span>contact@xploitix.in</span>
+        </div>
+        <div class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--color-primary); flex-shrink: 0;">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-width="2"/>
+          </svg>
+          <span>+91 XXXXX XXXXX</span>
+        </div>
+        <div class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--color-primary); flex-shrink: 0;">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-width="2"/>
+            <circle cx="12" cy="10" r="3" stroke-width="2"/>
+          </svg>
+          <span>Mohandas College, Thiruvananthapuram, Kerala</span>
+        </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>© 2025 IEEE SB-MCET </p>
+      <p>© 2026 XPLOITIX. All rights reserved.</p>
+      <p style="margin-top: 8px;">Designed with <span style="color: var(--color-primary);">♥</span> by IEEE SB MCET</p>
     </div>
   </footer>
 
-  <script>
-    lucide.createIcons();
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <div class="toast-title">Registration Successful!</div>
+    <div class="toast-description">Welcome to XPLOITIX 2026. Check your email for confirmation.</div>
+  </div>
 
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    function scrollToRegister() {
-      document.getElementById('register').scrollIntoView();
-    }
-
-    document.getElementById('regForm').addEventListener('submit', e => {
-      e.preventDefault();
-      alert('Registration Successful!');
-      e.target.reset();
-    });
-
-
-    const ieeeSelect = document.getElementById("ieeeMember");
-    const ieeeBox = document.getElementById("ieeeIdBox");
-    const ieeeIdInput = document.getElementById("ieeeId");
-
-    ieeeSelect.addEventListener("change", () => {
-      if (ieeeSelect.value === "yes") {
-        ieeeBox.style.display = "block";
-        ieeeIdInput.required = true;
-      } else {
-        ieeeBox.style.display = "none";
-        ieeeIdInput.required = false;
-        ieeeIdInput.value = "";
-      }
-    });
-
-
-  </script>
-  <script type="module" src="register.js"></script>
+  <script src="script.js"></script>
 </body>
-
 </html>
