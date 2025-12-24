@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>XPLOITIX | Cybersecurity Workshop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="nav-logo-side">
+      <img src="assets/SB.png" alt="MCET Logo" class="nav-img">
+    </div>
+
+    <div class="nav-logo-center">
+      <img src="assets/Offenso.png" alt="XPLOITIX Logo" class="nav-img-large">
+    </div>
+
+    <div class="nav-logo-side">
+      <img src="assets/ieee.png" alt="IEEE Logo" class="nav-img">
+    </div>
+  </div>
+</nav>
+<!-- HERO -->
+<section class="hero matrix-bg">
+  <div>
+    <h1 class="glow-text">XPLOITIX</h1>
+    <p>BREAK TO BUILD BETTER SECURITY</p>
+
+    <div class="cta" onclick="scrollToRegister()">
+      REGISTER NOW
+      <div><i data-lucide="chevron-down"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section id="register" class="matrix-bg">
+  <div class="form-card cyber-border glow-box">
+    <h2 style="text-align:center;font-family:Orbitron;">REGISTER NOW</h2>
+
+    <form id="regForm">
+      <label>Name</label>
+      <input id="name">
+      <div class="error" id="nameErr"></div>
+
+      <label>Email</label>
+      <input id="email">
+      <div class="error" id="emailErr"></div>
+
+      <label>Phone</label>
+      <input id="phone">
+      <div class="error" id="phoneErr"></div>
+
+      <label>College</label>
+      <input id="college">
+
+      <label>Year</label>
+      <select id="year">
+        <option value="">Select</option>
+        <option>1st</option><option>2nd</option><option>3rd</option><option>4th</option>
+      </select>
+
+      <button type="submit">REGISTER FOR XPLOITIX</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span style="color:var(--primary)">XPLOITIX</span></p>
+  <p>Team IEEE SB MCET</p>
+
+  <div class="socials">
+    <a href="#"><i data-lucide="linkedin"></i></a>
+    <a href="#"><i data-lucide="instagram"></i></a>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  function scrollToRegister() {
+    document.getElementById('register').scrollIntoView();
+  }
+
+  document.getElementById('regForm').addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Registration Successful!');
+    e.target.reset();
+  });
+</script>
+<script type="module" src="register.js"></script>
+</body>
+</html>
+
+
+
