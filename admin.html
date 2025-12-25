@@ -7,9 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <style>
-       /* Admin Container */
         * {
             margin: 0;
             padding: 0;
@@ -25,6 +23,7 @@
             overflow-x: hidden;
         }
 
+        /* Enhanced cyber grid background */
         body::before {
             content: '';
             position: fixed;
@@ -33,10 +32,38 @@
             width: 100%;
             height: 100%;
             background: 
-                repeating-linear-gradient(0deg, rgba(0, 255, 0, 0.03) 0px, transparent 1px, transparent 2px, rgba(0, 255, 0, 0.03) 3px),
-                repeating-linear-gradient(90deg, rgba(0, 255, 0, 0.03) 0px, transparent 1px, transparent 2px, rgba(0, 255, 0, 0.03) 3px);
+                repeating-linear-gradient(0deg, rgba(0, 255, 0, 0.05) 0px, transparent 1px, transparent 2px, rgba(0, 255, 0, 0.05) 3px),
+                repeating-linear-gradient(90deg, rgba(0, 255, 0, 0.05) 0px, transparent 1px, transparent 2px, rgba(0, 255, 0, 0.05) 3px);
             pointer-events: none;
             z-index: 1;
+            animation: gridPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Animated background accents */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 0, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 0, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 40% 20%, rgba(0, 255, 0, 0.06) 0%, transparent 25%);
+            pointer-events: none;
+            z-index: 1;
+            animation: bgShift 20s ease-in-out infinite;
+        }
+
+        @keyframes bgShift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 20px); }
         }
 
         .admin-container {
@@ -54,14 +81,38 @@
             margin-bottom: 40px;
             flex-wrap: wrap;
             gap: 20px;
+            position: relative;
         }
 
+        /* Glowing title effect */
         .admin-title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(32px, 5vw, 56px);
             color: #00ff00;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
-            letter-spacing: 6px;
+            text-shadow: 
+                0 0 10px rgba(0, 255, 0, 0.8),
+                0 0 20px rgba(0, 255, 0, 0.6),
+                0 0 30px rgba(0, 255, 0, 0.4),
+                0 0 40px rgba(0, 255, 0, 0.2);
+            letter-spacing: 8px;
+            animation: titleGlow 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% {
+                text-shadow: 
+                    0 0 10px rgba(0, 255, 0, 0.8),
+                    0 0 20px rgba(0, 255, 0, 0.6),
+                    0 0 30px rgba(0, 255, 0, 0.4);
+            }
+            50% {
+                text-shadow: 
+                    0 0 15px rgba(0, 255, 0, 1),
+                    0 0 30px rgba(0, 255, 0, 0.8),
+                    0 0 45px rgba(0, 255, 0, 0.6),
+                    0 0 60px rgba(0, 255, 0, 0.4);
+            }
         }
 
         .button-group {
@@ -80,10 +131,10 @@
             letter-spacing: 2px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', monospace;
             font-size: 13px;
             text-transform: uppercase;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -96,7 +147,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.4), transparent);
             transition: left 0.5s;
         }
 
@@ -107,9 +158,11 @@
 
         .logout-btn:hover,
         .export-btn:hover {
-            background: #00ff00;
-            color: #000000;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+            background: rgba(0, 255, 0, 0.2);
+            color: #00ff00;
+            box-shadow: 
+                0 0 25px rgba(0, 255, 0, 0.5),
+                inset 0 0 15px rgba(0, 255, 0, 0.1);
             transform: translateY(-2px);
         }
 
@@ -126,9 +179,13 @@
             background: rgba(0, 255, 0, 0.05);
             position: relative;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+            box-shadow: 
+                0 0 20px rgba(0, 255, 0, 0.3),
+                inset 0 0 20px rgba(0, 255, 0, 0.05);
+            overflow: hidden;
         }
 
+        /* Animated corner accents */
         .stat-card::before,
         .stat-card::after {
             content: '';
@@ -144,6 +201,7 @@
             left: -2px;
             border-right: none;
             border-bottom: none;
+            box-shadow: -5px -5px 10px rgba(0, 255, 0, 0.3);
         }
 
         .stat-card::after {
@@ -151,18 +209,32 @@
             right: -2px;
             border-left: none;
             border-top: none;
+            box-shadow: 5px 5px 10px rgba(0, 255, 0, 0.3);
         }
 
         .stat-card:hover {
-            background: rgba(0, 255, 0, 0.1);
-            box-shadow: 0 0 25px rgba(0, 255, 0, 0.3);
-            transform: translateY(-4px);
+            background: rgba(0, 255, 0, 0.12);
+            box-shadow: 
+                0 0 35px rgba(0, 255, 0, 0.5),
+                inset 0 0 30px rgba(0, 255, 0, 0.1);
+            transform: translateY(-6px);
+            border-color: #00ff00;
         }
 
         .stat-card:hover::before,
         .stat-card:hover::after {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Animated data pulse */
+        .stat-card::before {
+            animation: cornerPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes cornerPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         .stat-label {
@@ -171,16 +243,25 @@
             letter-spacing: 2px;
             margin-bottom: 12px;
             text-transform: uppercase;
-            opacity: 0.8;
+            opacity: 0.9;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
         }
 
         .stat-value {
             font-size: 42px;
             font-weight: 900;
             color: #00ff00;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            text-shadow: 
+                0 0 10px rgba(0, 255, 0, 0.8),
+                0 0 20px rgba(0, 255, 0, 0.5);
             font-family: 'Bebas Neue', sans-serif;
             letter-spacing: 3px;
+            animation: valueFlicker 3s ease-in-out infinite;
+        }
+
+        @keyframes valueFlicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
         }
 
         .search-container {
@@ -195,22 +276,27 @@
         .search-input {
             width: 100%;
             padding: 18px 50px 18px 20px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             border: 2px solid #00ff00;
             color: #00ff00;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', monospace;
             font-size: 14px;
             transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+            box-shadow: 
+                0 0 15px rgba(0, 255, 0, 0.3),
+                inset 0 0 10px rgba(0, 255, 0, 0.05);
         }
 
         .search-input::placeholder {
-            color: rgba(0, 255, 0, 0.5);
+            color: rgba(0, 255, 0, 0.4);
         }
 
         .search-input:focus {
             outline: none;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 0, 0.5),
+                inset 0 0 15px rgba(0, 255, 0, 0.1);
+            border-color: #00ff00;
         }
 
         .search-icon {
@@ -220,6 +306,7 @@
             transform: translateY(-50%);
             color: #00ff00;
             pointer-events: none;
+            filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.5));
         }
 
         .filter-group {
@@ -231,10 +318,10 @@
 
         .filter-select {
             padding: 12px 20px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             border: 2px solid #00ff00;
             color: #00ff00;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', monospace;
             font-size: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -243,7 +330,11 @@
 
         .filter-select:focus {
             outline: none;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.5);
+        }
+
+        .filter-select:hover {
+            background: rgba(0, 255, 0, 0.1);
         }
 
         .filter-select option {
@@ -253,11 +344,13 @@
 
         .table-container {
             border: 2px solid #00ff00;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             padding: 24px;
             position: relative;
             overflow-x: auto;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 0, 0.3),
+                inset 0 0 20px rgba(0, 255, 0, 0.05);
         }
 
         .table-container::before,
@@ -267,6 +360,7 @@
             width: 20px;
             height: 20px;
             border: 3px solid #00ff00;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
 
         .table-container::before {
@@ -291,6 +385,7 @@
 
         .data-table thead {
             border-bottom: 2px solid #00ff00;
+            background: rgba(0, 255, 0, 0.05);
         }
 
         .data-table th {
@@ -301,7 +396,7 @@
             color: #00ff00;
             font-weight: 700;
             text-transform: uppercase;
-            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+            text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
         }
 
         .data-table td {
@@ -313,11 +408,18 @@
 
         .data-table tbody tr {
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .data-table tbody tr:hover {
-            background: rgba(0, 255, 0, 0.08);
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.15);
+            background: rgba(0, 255, 0, 0.12);
+            box-shadow: 
+                0 0 15px rgba(0, 255, 0, 0.2),
+                inset 0 0 15px rgba(0, 255, 0, 0.1);
+        }
+
+        .data-table tbody tr:hover td {
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
         }
 
         .loading-spinner {
@@ -334,7 +436,7 @@
             border-top-color: #00ff00;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
         }
 
         @keyframes spin {
@@ -346,7 +448,24 @@
             padding: 80px 20px;
             color: #00ff00;
             font-size: 18px;
-            text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        /* Enhanced IEEE member badges */
+        .ieee-yes {
+            color: #00ff00;
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
+            padding: 4px 8px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            display: inline-block;
+        }
+
+        .ieee-no {
+            color: rgba(0, 255, 0, 0.4);
+            font-weight: 500;
         }
 
         @media (max-width: 768px) {
@@ -371,15 +490,40 @@
             .data-table {
                 font-size: 11px;
             }
+
+            .data-table th,
+            .data-table td {
+                padding: 12px 8px;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 0, 0.2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 0, 0.3);
+            border: 1px solid #00ff00;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 255, 0, 0.5);
         }
     </style>
 </head>
-<body class="cyber-grid">
+<body>
     <div class="admin-container">
         <!-- Header -->
         <div class="admin-header">
             <h1 class="admin-title">ADMIN DASHBOARD</h1>
-            <div>
+            <div class="button-group">
                 <button id="exportBtn" class="export-btn">EXPORT CSV</button>
                 <button id="logoutBtn" class="logout-btn">LOGOUT</button>
             </div>
@@ -387,20 +531,20 @@
 
         <!-- Statistics -->
         <div class="stats-grid">
-            <div class="stat-card box-glow">
+            <div class="stat-card">
                 <div class="stat-label">TOTAL REGISTRATIONS</div>
                 <div class="stat-value" id="totalCount">-</div>
             </div>
-            <div class="stat-card box-glow">
+            <div class="stat-card">
                 <div class="stat-label">TODAY'S REGISTRATIONS</div>
                 <div class="stat-value" id="todayCount">-</div>
             </div>
-            <div class="stat-card box-glow">
+            <div class="stat-card">
                 <div class="stat-label">UNIQUE COLLEGES</div>
                 <div class="stat-value" id="collegeCount">-</div>
             </div>
-            <div class="stat-card box-glow">
-                <div class="stat-label">ADVANCED USERS</div>
+            <div class="stat-card">
+                <div class="stat-label">IEEE MEMBERS</div>
                 <div class="stat-value" id="advancedCount">-</div>
             </div>
         </div>
@@ -412,7 +556,7 @@
                     type="text" 
                     id="searchInput" 
                     class="search-input" 
-                    placeholder="Search by name, email, phone, or college..."
+                    placeholder="Search by name, email, phone, college, or department..."
                 >
                 <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <circle cx="11" cy="11" r="8" stroke-width="2"/>
@@ -439,7 +583,7 @@
         </div>
 
         <!-- Table -->
-        <div class="table-container box-glow">
+        <div class="table-container">
             <div id="loadingSpinner" class="loading-spinner">
                 <div class="spinner"></div>
             </div>
@@ -452,8 +596,8 @@
                             <th>EMAIL</th>
                             <th>PHONE</th>
                             <th>COLLEGE</th>
-                            <th>YEAR</th>
-                            <th>EXPERIENCE</th>
+                            <th>DEPARTMENT</th>
+                            <th>IEEE MEMBER</th>
                             <th>REGISTERED</th>
                         </tr>
                     </thead>
@@ -462,17 +606,12 @@
                 </table>
             </div>
             <div id="noData" class="no-data" style="display: none;">
-                <p>No registrations found.</p>
+                <p>NO REGISTRATIONS FOUND</p>
             </div>
         </div>
     </div>
 
-    <script type="module" src="admin.js">
-       
-  
-    </script>
-     <script type="module" src="firebase.js"></script>
-      <script type="module" src="script.js"></script>
-       <script type="module" src="register.js"></script>
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="admin.js"></script>
 </body>
 </html>
