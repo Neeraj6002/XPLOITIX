@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
-        * {
+      * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -84,37 +84,6 @@
             position: relative;
         }
 
-        /* Glowing title effect */
-/*         .admin-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(32px, 5vw, 56px);
-            color: #00ff00;
-            text-shadow: 
-                0 0 10px rgba(0, 255, 0, 0.8),
-                0 0 20px rgba(0, 255, 0, 0.6),
-                0 0 30px rgba(0, 255, 0, 0.4),
-                0 0 40px rgba(0, 255, 0, 0.2);
-            letter-spacing: 8px;
-            animation: titleGlow 3s ease-in-out infinite;
-            position: relative;
-        }
-
-        @keyframes titleGlow {
-            0%, 100% {
-                text-shadow: 
-                    0 0 10px rgba(0, 255, 0, 0.8),
-                    0 0 20px rgba(0, 255, 0, 0.6),
-                    0 0 30px rgba(0, 255, 0, 0.4);
-            }
-            50% {
-                text-shadow: 
-                    0 0 15px rgba(0, 255, 0, 1),
-                    0 0 30px rgba(0, 255, 0, 0.8),
-                    0 0 45px rgba(0, 255, 0, 0.6),
-                    0 0 60px rgba(0, 255, 0, 0.4);
-            }
-        } */
-
         .button-group {
             display: flex;
             gap: 12px;
@@ -134,7 +103,6 @@
             font-family: 'Orbitron', monospace;
             font-size: 13px;
             text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -160,9 +128,6 @@
         .export-btn:hover {
             background: rgba(0, 255, 0, 0.2);
             color: #00ff00;
-            box-shadow: 
-                0 0 25px rgba(0, 255, 0, 0.5),
-                inset 0 0 15px rgba(0, 255, 0, 0.1);
             transform: translateY(-2px);
         }
 
@@ -179,9 +144,6 @@
             background: rgba(0, 255, 0, 0.05);
             position: relative;
             transition: all 0.3s ease;
-            box-shadow: 
-                0 0 20px rgba(0, 255, 0, 0.3),
-                inset 0 0 20px rgba(0, 255, 0, 0.05);
             overflow: hidden;
         }
 
@@ -201,7 +163,6 @@
             left: -2px;
             border-right: none;
             border-bottom: none;
-            box-shadow: -5px -5px 10px rgba(0, 255, 0, 0.3);
         }
 
         .stat-card::after {
@@ -209,14 +170,10 @@
             right: -2px;
             border-left: none;
             border-top: none;
-            box-shadow: 5px 5px 10px rgba(0, 255, 0, 0.3);
         }
 
         .stat-card:hover {
             background: rgba(0, 255, 0, 0.12);
-            box-shadow: 
-                0 0 35px rgba(0, 255, 0, 0.5),
-                inset 0 0 30px rgba(0, 255, 0, 0.1);
             transform: translateY(-6px);
             border-color: #00ff00;
         }
@@ -244,16 +201,12 @@
             margin-bottom: 12px;
             text-transform: uppercase;
             opacity: 0.9;
-            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
         }
 
         .stat-value {
             font-size: 42px;
             font-weight: 900;
             color: #00ff00;
-            text-shadow: 
-                0 0 10px rgba(0, 255, 0, 0.8),
-                0 0 20px rgba(0, 255, 0, 0.5);
             font-family: 'Bebas Neue', sans-serif;
             letter-spacing: 3px;
             animation: valueFlicker 3s ease-in-out infinite;
@@ -282,9 +235,6 @@
             font-family: 'Orbitron', monospace;
             font-size: 14px;
             transition: all 0.3s ease;
-            box-shadow: 
-                0 0 15px rgba(0, 255, 0, 0.3),
-                inset 0 0 10px rgba(0, 255, 0, 0.05);
         }
 
         .search-input::placeholder {
@@ -293,9 +243,6 @@
 
         .search-input:focus {
             outline: none;
-            box-shadow: 
-                0 0 30px rgba(0, 255, 0, 0.5),
-                inset 0 0 15px rgba(0, 255, 0, 0.1);
             border-color: #00ff00;
         }
 
@@ -306,7 +253,6 @@
             transform: translateY(-50%);
             color: #00ff00;
             pointer-events: none;
-            filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.5));
         }
 
         .filter-group {
@@ -325,12 +271,10 @@
             font-size: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
         }
 
         .filter-select:focus {
             outline: none;
-            box-shadow: 0 0 25px rgba(0, 255, 0, 0.5);
         }
 
         .filter-select:hover {
@@ -348,9 +292,6 @@
             padding: 24px;
             position: relative;
             overflow-x: auto;
-            box-shadow: 
-                0 0 30px rgba(0, 255, 0, 0.3),
-                inset 0 0 20px rgba(0, 255, 0, 0.05);
         }
 
         .table-container::before,
@@ -360,7 +301,6 @@
             width: 20px;
             height: 20px;
             border: 3px solid #00ff00;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
 
         .table-container::before {
@@ -396,7 +336,6 @@
             color: #00ff00;
             font-weight: 700;
             text-transform: uppercase;
-            text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
         }
 
         .data-table td {
@@ -413,13 +352,6 @@
 
         .data-table tbody tr:hover {
             background: rgba(0, 255, 0, 0.12);
-            box-shadow: 
-                0 0 15px rgba(0, 255, 0, 0.2),
-                inset 0 0 15px rgba(0, 255, 0, 0.1);
-        }
-
-        .data-table tbody tr:hover td {
-            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
         }
 
         .loading-spinner {
@@ -436,7 +368,6 @@
             border-top-color: #00ff00;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
         }
 
         @keyframes spin {
@@ -448,7 +379,6 @@
             padding: 80px 20px;
             color: #00ff00;
             font-size: 18px;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
             letter-spacing: 2px;
         }
 
@@ -456,7 +386,6 @@
         .ieee-yes {
             color: #00ff00;
             font-weight: 700;
-            text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
             padding: 4px 8px;
             background: rgba(0, 255, 0, 0.1);
             border: 1px solid #00ff00;
