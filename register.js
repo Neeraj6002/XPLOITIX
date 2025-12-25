@@ -8,30 +8,67 @@ import {
 console.log("✅ register.js loaded");
 console.log("✅ db object:", db);
 
-const form = document.getElementById("registrationForm");
-const toast = document.getElementById("toast");
+const form = document.getElementById("registration-form");
 
 console.log("✅ Form element:", form);
-console.log("✅ Toast element:", toast);
 
 // Function to show toast notification
 function showToast(title, description, isSuccess = true) {
   console.log("🔔 Showing toast:", title, description);
   
+  // Create toast element if it doesn't exist
+  let toast = document.getElementById("toast");
+  
   if (!toast) {
-    console.error("❌ Toast element not found!");
-    alert(title + ": " + description);
-    return;
+    toast = document.createElement('div');
+    toast.id = 'toast';
+    toast.className = 'toast';
+    toast.innerHTML = `
+      <div class="toast-title"></div>
+      <div class="toast-description"></div>
+    `;
+    document.body.appendChild(toast);
+    
+    // Add toast styles dynamically
+    const style = document.createElement('style');
+    style.textContent = `
+      .toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.95);
+        border: 2px solid #39ff14;
+        border-radius: 8px;
+        padding: 1.5rem;
+        min-width: 300px;
+        max-width: 500px;
+        box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        transform: translateX(150%);
+        transition: transform 0.3s ease;
+        z-index: 10000;
+      }
+      .toast.show {
+        transform: translateX(0);
+      }
+      .toast-title {
+        color: #39ff14;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .toast-description {
+        color: #a0a0a0;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+    `;
+    document.head.appendChild(style);
   }
   
   const toastTitle = toast.querySelector('.toast-title');
   const toastDescription = toast.querySelector('.toast-description');
-  
-  if (!toastTitle || !toastDescription) {
-    console.error("❌ Toast children not found!");
-    alert(title + ": " + description);
-    return;
-  }
   
   toastTitle.textContent = title;
   toastDescription.textContent = description;
@@ -58,32 +95,31 @@ if (form) {
     e.preventDefault();
     console.log("📝 Form submitted!");
 
-    const btn = document.getElementById("submitBtn");
+    const btn = form.querySelector('button[type="submit"]');
     
     if (!btn) {
       console.error("❌ Submit button not found!");
       return;
     }
     
+    const originalText = btn.textContent;
     btn.disabled = true;
-    btn.innerText = "PROCESSING...";
+    btn.textContent = "PROCESSING...";
 
     try {
-      // Get form values
+      // Get form values using the correct input names
       const formData = {
-        name: document.getElementById("name").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
-        year: document.getElementById("year").value,
-        college: document.getElementById("college").value.trim(),
-        experience: document.getElementById("experience").value,
+        fullName: form.elements['fullName'].value.trim(),
+        email: form.elements['email'].value.trim(),
+        phone: form.elements['phone'].value.trim(),
+        college: form.elements['college'].value.trim(),
+        department: form.elements['department'].value.trim(),
+        isIEEEMember: form.elements['isIEEEMember'].value,
         createdAt: serverTimestamp()
       };
 
       console.log("📦 Form data:", formData);
       console.log("🔥 Attempting to add to Firestore...");
-      console.log("🔥 Collection path: registrations");
-      console.log("🔥 Database object:", db);
 
       // Add to Firestore
       const docRef = await addDoc(collection(db, "registrations"), formData);
@@ -103,7 +139,6 @@ if (form) {
       console.error("❌ ERROR adding document:", error);
       console.error("❌ Error code:", error.code);
       console.error("❌ Error message:", error.message);
-      console.error("❌ Full error:", error);
       
       // Show error toast
       showToast(
@@ -115,10 +150,10 @@ if (form) {
 
     // Re-enable button
     btn.disabled = false;
-    btn.innerText = "SUBMIT REGISTRATION";
+    btn.textContent = originalText;
   });
   
   console.log("✅ Form listener added successfully");
 } else {
-  console.error("❌ CRITICAL: Form element not found!");
+  console.error("❌ CRITICAL: Form element with id='registration-form' not found!");
 }
