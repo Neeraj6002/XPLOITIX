@@ -7,7 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
+       /* Admin Container */
         * {
             margin: 0;
             padding: 0;
@@ -372,35 +374,38 @@
         }
     </style>
 </head>
-<body>
+<body class="cyber-grid">
     <div class="admin-container">
+        <!-- Header -->
         <div class="admin-header">
             <h1 class="admin-title">ADMIN DASHBOARD</h1>
-            <div class="button-group">
-                <button id="exportBtn" class="export-btn">📊 EXPORT CSV</button>
-                <button id="logoutBtn" class="logout-btn">🔒 LOGOUT</button>
+            <div>
+                <button id="exportBtn" class="export-btn">EXPORT CSV</button>
+                <button id="logoutBtn" class="logout-btn">LOGOUT</button>
             </div>
         </div>
 
+        <!-- Statistics -->
         <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label">Total Registrations</div>
-                <div class="stat-value" id="totalCount">0</div>
+            <div class="stat-card box-glow">
+                <div class="stat-label">TOTAL REGISTRATIONS</div>
+                <div class="stat-value" id="totalCount">-</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-label">Today's Registrations</div>
-                <div class="stat-value" id="todayCount">0</div>
+            <div class="stat-card box-glow">
+                <div class="stat-label">TODAY'S REGISTRATIONS</div>
+                <div class="stat-value" id="todayCount">-</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-label">Unique Colleges</div>
-                <div class="stat-value" id="collegeCount">0</div>
+            <div class="stat-card box-glow">
+                <div class="stat-label">UNIQUE COLLEGES</div>
+                <div class="stat-value" id="collegeCount">-</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-label">IEEE Members</div>
-                <div class="stat-value" id="ieeeMemberCount">0</div>
+            <div class="stat-card box-glow">
+                <div class="stat-label">ADVANCED USERS</div>
+                <div class="stat-value" id="advancedCount">-</div>
             </div>
         </div>
 
+        <!-- Search and Filters -->
         <div class="search-container">
             <div class="search-box">
                 <input 
@@ -415,15 +420,26 @@
                 </svg>
             </div>
             <div class="filter-group">
-                <select id="ieeeMemberFilter" class="filter-select">
-                    <option value="">All Members</option>
-                    <option value="yes">IEEE Members</option>
-                    <option value="no">Non-IEEE Members</option>
+                <select id="yearFilter" class="filter-select">
+                    <option value="">All Years</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                    <option value="other">Other</option>
+                </select>
+                <select id="experienceFilter" class="filter-select">
+                    <option value="">All Experience Levels</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                    <option value="professional">Professional</option>
                 </select>
             </div>
         </div>
 
-        <div class="table-container">
+        <!-- Table -->
+        <div class="table-container box-glow">
             <div id="loadingSpinner" class="loading-spinner">
                 <div class="spinner"></div>
             </div>
@@ -432,187 +448,31 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Full Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>College</th>
-                            <th>Department/Year</th>
-                            <th>IEEE Member</th>
-                            <th>Registered</th>
+                            <th>NAME</th>
+                            <th>EMAIL</th>
+                            <th>PHONE</th>
+                            <th>COLLEGE</th>
+                            <th>YEAR</th>
+                            <th>EXPERIENCE</th>
+                            <th>REGISTERED</th>
                         </tr>
                     </thead>
-                    <tbody id="adminTable"></tbody>
+                    <tbody id="adminTable">
+                    </tbody>
                 </table>
             </div>
             <div id="noData" class="no-data" style="display: none;">
-                ⚠️ No registrations found
+                <p>No registrations found.</p>
             </div>
         </div>
     </div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-        // Initialize Firebase (replace with your config)
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        let allRegistrations = [];
-        let filteredRegistrations = [];
-
-        // Check authentication
-        onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                window.location.href = 'login.html';
-            } else {
-                loadRegistrations();
-            }
-        });
-
-        // Logout
-        document.getElementById('logoutBtn').addEventListener('click', async () => {
-            await signOut(auth);
-            window.location.href = 'login.html';
-        });
-
-        // Load registrations
-        async function loadRegistrations() {
-            try {
-                const q = query(collection(db, "registrations"), orderBy("createdAt", "desc"));
-                const snapshot = await getDocs(q);
-                
-                allRegistrations = snapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
-
-                filteredRegistrations = [...allRegistrations];
-                updateStats();
-                renderTable();
-
-                document.getElementById('loadingSpinner').style.display = 'none';
-                document.getElementById('tableContent').style.display = 'block';
-            } catch (error) {
-                console.error("Error loading registrations:", error);
-                document.getElementById('loadingSpinner').style.display = 'none';
-                document.getElementById('noData').style.display = 'block';
-            }
-        }
-
-        // Update statistics
-        function updateStats() {
-            const total = allRegistrations.length;
-            const today = allRegistrations.filter(reg => {
-                const regDate = reg.createdAt?.toDate?.() || new Date();
-                const todayDate = new Date();
-                return regDate.toDateString() === todayDate.toDateString();
-            }).length;
-
-            const colleges = new Set(allRegistrations.map(reg => reg.college)).size;
-            const ieeeMembers = allRegistrations.filter(reg => reg.isIEEEMember === 'yes').length;
-
-            document.getElementById('totalCount').textContent = total;
-            document.getElementById('todayCount').textContent = today;
-            document.getElementById('collegeCount').textContent = colleges;
-            document.getElementById('ieeeMemberCount').textContent = ieeeMembers;
-        }
-
-        // Render table
-        function renderTable() {
-            const tbody = document.getElementById('adminTable');
-            tbody.innerHTML = '';
-
-            if (filteredRegistrations.length === 0) {
-                document.getElementById('tableContent').style.display = 'none';
-                document.getElementById('noData').style.display = 'block';
-                return;
-            }
-
-            document.getElementById('tableContent').style.display = 'block';
-            document.getElementById('noData').style.display = 'none';
-
-            filteredRegistrations.forEach((reg, index) => {
-                const row = document.createElement('tr');
-                const date = reg.createdAt?.toDate?.() || new Date();
-                
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${reg.fullName || 'N/A'}</td>
-                    <td>${reg.email || 'N/A'}</td>
-                    <td>${reg.phone || 'N/A'}</td>
-                    <td>${reg.college || 'N/A'}</td>
-                    <td>${reg.department || 'N/A'}</td>
-                    <td>${reg.isIEEEMember === 'yes' ? '✓ Yes' : '✗ No'}</td>
-                    <td>${date.toLocaleDateString()} ${date.toLocaleTimeString()}</td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // Search functionality
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            filteredRegistrations = allRegistrations.filter(reg => 
-                (reg.fullName?.toLowerCase() || '').includes(searchTerm) ||
-                (reg.email?.toLowerCase() || '').includes(searchTerm) ||
-                (reg.phone?.toLowerCase() || '').includes(searchTerm) ||
-                (reg.college?.toLowerCase() || '').includes(searchTerm)
-            );
-            applyFilters();
-        });
-
-        // IEEE Member filter
-        document.getElementById('ieeeMemberFilter').addEventListener('change', (e) => {
-            applyFilters();
-        });
-
-        function applyFilters() {
-            const ieeeMemberFilter = document.getElementById('ieeeMemberFilter').value;
-            
-            if (ieeeMemberFilter) {
-                filteredRegistrations = filteredRegistrations.filter(reg => 
-                    reg.isIEEEMember === ieeeMemberFilter
-                );
-            }
-            
-            renderTable();
-        }
-
-        // Export to CSV
-        document.getElementById('exportBtn').addEventListener('click', () => {
-            const csv = [
-                ['#', 'Full Name', 'Email', 'Phone', 'College', 'Department/Year', 'IEEE Member', 'Registered'],
-                ...filteredRegistrations.map((reg, index) => [
-                    index + 1,
-                    reg.fullName || 'N/A',
-                    reg.email || 'N/A',
-                    reg.phone || 'N/A',
-                    reg.college || 'N/A',
-                    reg.department || 'N/A',
-                    reg.isIEEEMember === 'yes' ? 'Yes' : 'No',
-                    (reg.createdAt?.toDate?.() || new Date()).toLocaleString()
-                ])
-            ].map(row => row.join(',')).join('\n');
-
-            const blob = new Blob([csv], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `xploitix-registrations-${new Date().toISOString().split('T')[0]}.csv`;
-            a.click();
-        });
+    <script type="module" src="admin.js">
+       
+  
     </script>
+     <script type="module" src="firebase.js"></script>
+      <script type="module" src="script.js"></script>
+       <script type="module" src="register.js"></script>
 </body>
 </html>
